@@ -1,4 +1,3 @@
-
 package com.azdegar.nlp.tagfix;
 
 import edu.stanford.nlp.ling.TaggedWord;

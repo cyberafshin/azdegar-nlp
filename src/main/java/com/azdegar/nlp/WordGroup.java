@@ -122,19 +122,6 @@ public class WordGroup extends ArrayList<ExtWord> {
         return -1;
     }
 
-//    public int findParticle(String pattern, int from, int to) {
-//        int i = from;
-//        while (i < size() && i < to) {
-//            if (get(i).matchw(",|\\(|\\)|:")) {
-//                return -1;
-//            }
-//            if (get(i).matchw(pattern)) {
-//                return i;
-//            }
-//            i++;
-//        }
-//        return -1;
-//    }
     public int findSequence(String sequence, int from, int to) {
         int i = from;
         int l = sequence.split(" ").length;

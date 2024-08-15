@@ -34,6 +34,7 @@ public class EnglishAnalyzer {
         int idxMainVerb = -1;
         int idxModal = -1;
         int idxNeed = parent != null ? parent.getIdxNeed() : -1;
+        int idxNever = -1;
 
         for (int i = 0; i < wg.size(); i++) {
             if (wg.eql(i, "do")) {
@@ -73,7 +74,11 @@ public class EnglishAnalyzer {
                     if (idxMainVerb == -1) {
                         idxMainVerb = i;
                     }
+
                 }
+
+            } else if (wg.get(i).eqw("never")) {
+                idxNever = i;
             } else if (wg.mt(i, "VB[DPZ]?")) {
                 if (idxMainVerb == idxModal || idxMainVerb == idxDo || idxMainVerb == idxBe || idxMainVerb == idxHave) {
                     idxMainVerb = i;
@@ -145,6 +150,13 @@ public class EnglishAnalyzer {
             }
         }
 
+        if (idxNever != -1) {
+            if (idxModal != -1 && idxModal < idxNever && wg.mw(idxModal, "can|could")) {
+                wg.get(idxModal).negate();
+            } else if (idxMainVerb > idxNever) {
+                wg.get(idxMainVerb).negate();
+            }
+        }
         if (idxHaveTo != -1) {
             idxModal = idxHaveTo;
             if (wg.prev(idxHaveTo).eql("have") && wg.get(idxHaveTo + 1).matcht("VBP?")) {

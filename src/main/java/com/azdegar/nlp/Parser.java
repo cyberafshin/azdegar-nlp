@@ -43,16 +43,15 @@ import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphEdge;
 import edu.stanford.nlp.semgraph.SemanticGraphFactory;
-import static com.azdegar.nlp.EnglishGrammar.GRAM_ING;
-import static com.azdegar.nlp.EnglishGrammar.GRAM_INGTO;
-import static com.azdegar.nlp.EnglishGrammar.NOUNS_ENDING_ING;
 import com.azdegar.nlp.tagfix.Chunk;
 import com.azdegar.nlp.tagfix.Lot;
 import com.azdegar.nlp.tagfix.That;
 import edu.stanford.nlp.ie.util.RelationTriple;
 import edu.stanford.nlp.simple.Sentence;
-import java.io.File;
 import java.util.Collection;
+import static com.azdegar.nlp.EnglishGrammar.GRAM_ING;
+import static com.azdegar.nlp.EnglishGrammar.GRAM_INGTO;
+import static com.azdegar.nlp.EnglishGrammar.NOUNS_ENDING_ING;
 
 /**
  *
@@ -764,7 +763,7 @@ public class Parser {
                 }
             } else if (words.get(i).tag().matches("VBN")) {
                 if (i > 0) {
-                    if (findMatchingWordBefore(words, "have|has|am|are|is|was|were|be|been", i - 1, 4) != -1) {
+                    if (findMatchingWordBefore(words, "have|'ve|has|am|are|is|was|were|be|been", i - 1, 3) != -1) {
                         // VBN
                     } else if (words.get(i - 1).word().toLowerCase().matches("so")) {
                         words.get(i).setTag("RB");
@@ -781,6 +780,14 @@ public class Parser {
                             }
                         }
                     }
+                } else {
+                    words.get(i).setTag("JJ");
+                }
+            }else if (words.get(i).tag().matches("VBD")) {
+                if (i > 0) {
+                    if (findMatchingWordBefore(words, "have|'ve|has|am|are|is|was|were|be|been", i - 1, 3) != -1) {
+                        words.get(i).setTag("VBN");
+                    } 
                 } else {
                     words.get(i).setTag("JJ");
                 }
@@ -940,17 +947,6 @@ public class Parser {
                 }
             }
         }
-
-        boolean have = false;
-        for (i = 0; i < words.size(); i++) {
-            String w = words.get(i).word().toLowerCase();
-            if (w.matches("ha(ve|s|d)") || w.matches("am|is|are|was|were|be(ing)?")) {
-                have = true;
-            } else if (words.get(i).tag().equals("VBN") && !have) {
-                words.get(i).setTag("VBD");
-            }
-        }
-
     }
 
     protected void transform(List<CoreLabel> words) {
