@@ -879,6 +879,7 @@ public class EnglishAnalyzer {
             }
             m.put("predicate", predicate);
         }
+        clause.setParts(m);
         return m;
     }
 

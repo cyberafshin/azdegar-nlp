@@ -339,4 +339,18 @@ public class Clause {
     public WordGroup getIndirectObject() {
         return parts.get("iobj");
     }
+
+    public WordGroup getObject() {
+        if (parts != null) {
+            if (parts.get("dobj") != null) {
+                return parts.get("dobj");
+            } else {
+                return parts.get("iobj");
+            }
+        } else {
+            return null;
+        }
+
+    }
+
 }

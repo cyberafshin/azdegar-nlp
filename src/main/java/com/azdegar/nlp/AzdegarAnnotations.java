@@ -56,4 +56,13 @@ public class AzdegarAnnotations {
             return List.class;
         }
     }
+
+    public static class ReferenceAnnotation implements CoreAnnotation<WordGroup> {
+
+        @Override
+        public Class<WordGroup> getType() {
+            return WordGroup.class;
+        }
+    }
+
 }

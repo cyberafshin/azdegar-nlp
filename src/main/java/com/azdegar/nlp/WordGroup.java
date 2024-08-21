@@ -308,4 +308,8 @@ public class WordGroup extends ArrayList<ExtWord> {
         this.label = label;
     }
 
+    public boolean isPronoun() {
+        return !isEmpty() && get(0).eqt("PRP");
+    }
+
 }

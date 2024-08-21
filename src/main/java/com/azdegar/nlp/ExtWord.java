@@ -158,6 +158,14 @@ public class ExtWord extends CoreLabel implements Serializable, Comparable {
         return get(AzdegarAnnotations.TranslationAnnotation.class);
     }
 
+    public void setReference(WordGroup wg) {
+        set(AzdegarAnnotations.ReferenceAnnotation.class, wg);
+    }
+
+    public WordGroup getReference() {
+        return get(AzdegarAnnotations.ReferenceAnnotation.class);
+    }
+
     public Character getTransitive() {
         return get(AzdegarAnnotations.TransitiveAnnotation.class);
     }
