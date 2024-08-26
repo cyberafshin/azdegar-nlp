@@ -332,6 +332,10 @@ public class Clause {
         return (parts != null && parts.get(part) != null) ? parts.get(part).get(parts.get(part).size() - 1).localIndex() : -1;
     }
 
+    public WordGroup getSubject() {
+        return parts.get("subj");
+    }
+
     public WordGroup getDirectObject() {
         return parts.get("dobj");
     }
