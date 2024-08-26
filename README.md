@@ -1,5 +1,15 @@
 Azdegar NLP provides an advanced and high level API for natural language processing on top of Stanford CoreNLP library.
 
+### Significient features:
+1. Transforms raw text into main and subclauses.
+2. Recognizes tense, voice and person of clauses.
+3. Recognizes subject, object, verbs and adverbs as parts of sentences.
+4. Fixes POS tagger bugs. Example:  *`This plane lands in Tehran.`* CoreNLP mistakenly recognizes ***lands*** as a plural noun (NNS), while it should be recognized as a verb (VBZ).
+5. Fixes lemmatizer bugs.
+6. Adds ontology through implementing OntologyRepository interface.
+7. Allows defining word combinations through implementing MultiWordRepository interface. Example: *`Georg Wilhelm Friedrich Hegel`* or *`theory of types`*
+8. Allows defining phrasal verbs.
+   
 ### Usage
 ``` Java
 Properties properties = new Properties();
