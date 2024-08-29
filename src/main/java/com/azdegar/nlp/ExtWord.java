@@ -372,6 +372,16 @@ public class ExtWord extends CoreLabel implements Serializable, Comparable {
 //        return lemma().matches(EnglishGrammar.GRAM_CAUSATIVE) || lemma().contains("⇒");
         return lemma().contains("⇒");
     }
+    
+
+    public void change(String word, String tag, String lemma) {
+        setWord(word);
+        setTag(tag);
+        setLemma(lemma);
+    }
+
+    public void change(String word, String tag) {
+        change(word, tag, word);
+    }
 
 }
-//10.6.1 Let us now turn to some philosophical issues. In particular, what does the ternary relation mean, and why might it be reasonable to employ it in stating the truth conditions of a conditional? 

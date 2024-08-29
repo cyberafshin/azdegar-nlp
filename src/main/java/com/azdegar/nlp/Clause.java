@@ -53,6 +53,15 @@ public class Clause {
         this.place = place;
     }
 
+    public Clause(WordGroup wg) {
+        words = wg;
+        subs = new TreeMap();
+        tense = Tense.NONE;
+        type = SentenceType.Affirmative;
+        voice = Voice.Active;
+        person = Person.NONE;
+    }
+
     public void add(ExtWord tw) {
         tw.setLocalIndex(words.size());
         words.add(tw);
