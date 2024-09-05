@@ -41,16 +41,15 @@ public class WordGroup extends ArrayList<ExtWord> {
 
     @Override
     public String toString() {
-//        return this.stream().filter(e -> !e.isDisabled()).map(e -> e.info()).collect(Collectors.joining(" "));
-        return this.stream().map(e -> e.info()).collect(Collectors.joining(" "));
+        return stream().map(e -> e.info()).collect(Collectors.joining(" "));
     }
 
     public String getKey() {
-        return this.stream().filter(e -> !e.isDisabled()).map(e -> e.info()).collect(Collectors.joining(" "));
+        return stream().filter(e -> !e.isDisabled()).map(e -> e.info()).collect(Collectors.joining(" "));
     }
 
     public String toString(int start, int end) {
-        return this.subList(start, end).stream().filter(e -> !e.isDisabled()).map(e -> e.word()).collect(Collectors.joining(" "));
+        return subList(start, end).stream().filter(e -> !e.isDisabled()).map(e -> e.word()).collect(Collectors.joining(" "));
     }
 
     public int indexOf(String word) {

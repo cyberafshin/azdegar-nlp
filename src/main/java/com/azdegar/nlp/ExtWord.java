@@ -337,7 +337,6 @@ public class ExtWord extends CoreLabel implements Serializable, Comparable {
         if (tag() != null && !tag().isBlank()) {
             s += "/" + tag();
         }
-//        s += String.format("<%02d, %02d>", index, depth);
         if (disabled) {
             return strikethrough(s);
         } else {
